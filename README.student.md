@@ -91,7 +91,7 @@ Appliquez les migrations de base de données existantes pour créer les tables n
 npx prisma migrate dev --name init
 ```
 
-Cela créera un fichier `dev.db` dans votre répertoire `prisma`.
+Cela appliquera les migrations à votre base de données MySQL configurée dans le fichier `.env.local`.
 
 #### b. Générer le Client Prisma
 
@@ -114,6 +114,8 @@ stripe login
 ```
 
 Cela ouvrira une fenêtre de navigateur pour authentifier votre CLI avec votre compte Stripe.
+
+**Note :** Pour que les webhooks Stripe fonctionnent, votre environnement local doit être accessible depuis Internet. Dans ce projet, [ngrok](https://ngrok.com/) a été utilisé pour exposer le port 3000 (`ngrok http 3000`). La commande `stripe listen` décrite ci-dessous est une alternative qui remplit la même fonction.
 
 #### c. Transférer les Événements Webhook
 
